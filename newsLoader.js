@@ -32,7 +32,7 @@ const displayNews = news => {
         <img src="${news.author.img}" class="card-img-top rounded rounded-circle mt-4 me-2" style=" width:30%; height:40%;">
         <div class = "author-content">
         <p class = "author-title">
-        ${news.author.name? news.author.name : 'No data available!'}
+        ${news.author.name? news.author.name : 'No data!'}
         </p>
         <p class = "date">
         ${news.author.published_date}
@@ -42,11 +42,11 @@ const displayNews = news => {
         <div class = "view mt-5 d-flex">
         <i class="fa-regular fa-eye me-2 mt-2"></i>
         <P class=" me-5 mt-1">
-        ${news.total_view? news.total_view : 'No view available!'}
+        ${news.total_view? news.total_view : 'No!'}
         </P>
         </div>
         <div class = "details-button mt-5">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button onclick="showDetails('${news.category_id}','${news._id}')"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <i class="fa-solid fa-arrow-right"></i>
         </button>
         </div>
@@ -54,10 +54,13 @@ const displayNews = news => {
       </div>
     </div>
 
+
+
+
       `;
     newsFeedContainer.appendChild(newsDiv);
   }) 
-  console.log(id);
+
   
 }
 
@@ -96,21 +99,21 @@ const displayNewsTwo = news => {
         <img src="${news.author.img}" class="card-img-top rounded rounded-circle mt-4 me-2" style=" width:30%; height:40%;">
         <div class = "author-content">
         <p class = "author-title">
-        ${news.author.name? news.author.name : 'No data available!'}
+        ${news.author.name? news.author.name : 'No data!'}
         </p>
         <p class = "date">
-        ${news.author.published_date}
+        ${news.author.published_date? news.author.published_date : 'No data!'}
         </p>
         </div>
         </div>
         <div class = "view mt-5 d-flex">
         <i class="fa-regular fa-eye me-2 mt-2"></i>
         <P class=" me-5 mt-1">
-        ${news.total_view? news.total_view : 'No view available!'}
+        ${news.total_view? news.total_view : 'No!'}
         </P>
         </div>
         <div class = "details-button mt-5">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <i class="fa-solid fa-arrow-right"></i>
         </button>
         </div>
@@ -128,35 +131,21 @@ displayNewsTwo('01')
 
 
 // Modal
-const loadModal = (id) => {
- const url = `https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a`
-  fetch(url)
-    .then(res => res.json())
-    .then(data => displayModal(data.data))
-  .catch(error => console.log(error))
-}
-
-const displayModal = modal => {
-  // console.log(modal);
-  modal.forEach(modal => {
-    console.log(modal);
-
-
-  })
-}
-loadModal()
 
 
 
-//  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+
+// <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 //   <div class="modal-dialog">
 //     <div class="modal-content">
 //       <div class="modal-header">
-//         <h5 class="modal-title" id="exampleModalLabel">${modal.title}</h5>
+//         <h5 class="modal-title" id="exampleModalLabel">${news._id}</h5>
 //         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 //       </div>
 //       <div class="modal-body">
-//         <img src="${modal.image_url}" class="card-img-top">
+//         ...
 //       </div>
 //       <div class="modal-footer">
 //         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -164,4 +153,4 @@ loadModal()
 //       </div>
 //     </div>
 //   </div>
-// </div > 
+// </div>
