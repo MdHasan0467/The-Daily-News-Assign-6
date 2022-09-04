@@ -98,17 +98,13 @@ const displayNews = (categoriesNewsData, categoryName) => {
               <p>${ newsData.author.published_date ? newsData.author.published_date.slice(0, 10) : "No Data" }</p>
             </div>
 
-            <div>
+            <div class ="me-5">
               <p><i class="fa-solid fa-eye"></i>${ newsData.total_view ? newsData.total_view : "No Data" }</p>
             </div>
 
             <div>
-              <p><i class="fa-solid fa-star"></i>${ newsData.rating.number ? newsData.rating.number : "No Data" }</p>
-            </div>
-
-            <div>
               <button type="button"onclick="showModal('${ newsData._id }')" class="details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Details
+                <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
           </div>
@@ -165,7 +161,7 @@ const displayModal = modalDetails => {
         </div>
 
         <div class="modal-author-div d-flex gap-5 justify-content-evenly align-items-center">
-          <img class="author-img rounded-5" src="${ modalDetails.author.img ? modalDetails.author.img : "No Data" }" alt="">
+          <img class="author-img rounded-5 img-fluid w-25" src="${ modalDetails.author.img ? modalDetails.author.img : "No Data" }" alt="">
           <h5>Author: ${ modalDetails.author.name ? modalDetails.author.name : "No Data" }</h5>
           <h5>Date: ${ modalDetails.published_date ? modalDetails.published_date.slice(0, 10) : "No Data" }</h5>
         </div>
