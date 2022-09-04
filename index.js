@@ -25,11 +25,13 @@ const displayCategory = categories => {
 
   categories.forEach(category => {
     // console.log(category);
-    const categoryLi = document.createElement('li');
+    const button = document.createElement('button');
+    button.classList.add('rounded')
+    
 
-    categoryLi.innerHTML = `<button onclick="categoryNewsShow('${ category.category_id }', '${ category.category_name }')" type="button" class="btn category-btn">${ category.category_name }</button>
+    button.innerHTML = `<button onclick="categoryNewsShow('${ category.category_id }', '${ category.category_name }')" type="button" class="btn category-btn">${ category.category_name }</button>
         `;
-    categoriesUl.appendChild(categoryLi);
+    categoriesUl.appendChild(button);
   })
 }
 
@@ -93,13 +95,13 @@ const displayNews = (categoriesNewsData, categoryName) => {
           </div>
           <div class="d-flex justify-content-between align-items-center">
             <div class="author-div">
-              <img class="w-25" src="${ newsData.author.img ? newsData.author.img : "No Data" }" alt="Author Image" />
+              <img class="w-25 rounded rounded-circle" src="${ newsData.author.img ? newsData.author.img : "No Data" }" alt="Author Image" />
               <p>${ newsData.author.name ? newsData.author.name : "No Data" }</p>
               <p>${ newsData.author.published_date ? newsData.author.published_date.slice(0, 10) : "No Data" }</p>
             </div>
 
             <div class ="me-5">
-              <p><i class="fa-solid fa-eye"></i>${ newsData.total_view ? newsData.total_view : "No Data" }</p>
+              <p> Views ${ newsData.total_view ? newsData.total_view : "No Data" }</p>
             </div>
 
             <div>
